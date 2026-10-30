@@ -8,6 +8,7 @@ Site institucional da Nördhub publicado a partir deste repositório no GitHub P
 
 - Emblema original com perspectiva ao ponteiro, flutuação, rotação e iluminação na rolagem.
 - Névoa nas entradas, digitação progressiva e LED percorrendo as bordas dos projetos.
+- Digitação e névoa aparecem uma vez por texto ou bloco a cada abertura ou recarga da página. Voltar a uma seção não reinicia esses efeitos; se um texto sair da tela durante a digitação, ele fica completo imediatamente.
 - Menu fixo e menu mobile, filtros, detalhes dos projetos em diálogos e acesso à plataforma de gestão.
 - Imagens, fontes, texturas e símbolos originais incluídos no projeto.
 - Formulário que prepara e copia uma solicitação localmente, como na versão original. Ele não envia mensagens nem armazena dados em um servidor.
