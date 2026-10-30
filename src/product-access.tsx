@@ -1,0 +1,10 @@
+'use client';
+import {useEffect,useRef,useState} from 'react';
+import {ChevronDown,ArrowUpRight,Scissors,X} from 'lucide-react';
+// Active login verified in the browser. Switch to the custom subdomain when it is online.
+export const GESTAO_LOGIN_URL='https://nordhub-web-beta.onrender.com/';
+export default function ProductAccess(){
+ const[open,setOpen]=useState(false);const box=useRef<HTMLDivElement>(null);const trigger=useRef<HTMLButtonElement>(null);
+ useEffect(()=>{if(!open)return;const outside=(event:PointerEvent)=>{if(!box.current?.contains(event.target as Node))setOpen(false)};const escape=(event:KeyboardEvent)=>{if(event.key==='Escape'){setOpen(false);trigger.current?.focus()}};document.addEventListener('pointerdown',outside);document.addEventListener('keydown',escape);return()=>{document.removeEventListener('pointerdown',outside);document.removeEventListener('keydown',escape)}},[open]);
+ return <div className="product-access" ref={box}><button ref={trigger} className="login-link product-access-trigger" onClick={()=>setOpen(!open)} aria-expanded={open} aria-controls="product-access-panel">Entrar <ChevronDown size={15}/></button>{open&&<section className="product-access-panel" id="product-access-panel" aria-label="Escolha o produto para entrar"><div className="access-panel-heading"><span>ACESSAR SEU PRODUTO</span><button onClick={()=>{setOpen(false);trigger.current?.focus()}} aria-label="Fechar acesso aos produtos"><X size={17}/></button></div><div className="access-product"><div className="access-product-icon"><Scissors size={22}/></div><div><strong>Nördhub Gestão</strong><p>Agenda, equipe e financeiro.</p></div><span>Beta</span></div><p className="access-description">Já é cliente? Entre com o login e a senha da sua plataforma.</p><a className="button primary" href={GESTAO_LOGIN_URL}>Entrar na Nördhub Gestão <ArrowUpRight size={17}/></a><a className="access-learn" href="#produtos" onClick={()=>setOpen(false)}>Ainda não conhece? Explore a plataforma.</a></section>}</div>
+}
