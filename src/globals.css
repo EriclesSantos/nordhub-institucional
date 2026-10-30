@@ -137,6 +137,44 @@ html[data-motion=paused]{scroll-behavior:auto}html[data-motion=paused] *,html[da
 .project-led rect{fill:none;vector-effect:non-scaling-stroke}
 .led-track{stroke:#b18aff;stroke-width:1.5;opacity:.55}.led-beam{stroke:#dbbfff;stroke-width:3;stroke-dasharray:13 87;stroke-linecap:round;filter:drop-shadow(0 0 4px #a88cff)}
 .project-card[data-led=on] .project-led{opacity:.6}.project-card[data-led=on] .led-beam{animation:project-led-orbit 4.5s linear infinite}
+
+/* Let the mobile introduction grow with its text and actions. */
+@media(max-width:800px){
+ .hero{height:auto;max-height:none;min-height:0}
+ .hero-inner{height:auto;padding-bottom:24px}
+ .hero-aside{padding-bottom:28px}
+ .hero-aside .button{flex-shrink:0;margin-bottom:4px}
+ .cinematic-divider{margin-top:0}
+}
+
+/* The irregular silhouette is the only visible button border. */
+:is(.button,button:not(.project-card),.circle-button,.social-buttons>a,.text-link){border:0!important}
+.button.outline{outline:none;background:transparent}
+:is(.button,button:not(.project-card),.circle-button,.social-buttons>a,.text-link):focus-visible{
+ outline:none;
+ filter:drop-shadow(0 0 2px #f0e5ff) drop-shadow(0 0 9px #a88cff);
+}
+.filter-row button.active{background:transparent}
+
+/* Animated text inherits the darker accent on the lavender paper. */
+.products .section-heading h2 .type-text>span>span:not(.type-char),
+#projetos .section-heading h2 .type-text>span>span:not(.type-char){color:#4b315f}
+
+/* The product promise belongs to the editorial flow, below its presentation. */
+.product-promise{padding:44px 0 30px;border-bottom:1px solid #62457344}
+.product-promise h3{font-family:var(--font-code);font-size:clamp(25px,3.2vw,42px);line-height:1.3;letter-spacing:-.055em}
+.product-promise h3 span{display:block;color:#43334f}
+.product-promise h3 strong{display:block;color:#4b315f;font-weight:700;margin-top:4px}
+.product-promise+.product-story{margin-top:32px}
+
+/* Recognizable technology symbols keep names for assistive technology and hover. */
+.project-tags.technology-icons{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:24px}
+.project-tags.technology-icons>.technology-icon{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;padding:7px;border:1px solid #a88cff36;border-radius:6px;background:#a88cff09;color:#d4baf4}
+.technology-icon svg{display:block;flex-shrink:0;width:24px;height:24px}
+@media(max-width:480px){
+ .product-promise{padding:32px 0 24px}
+ .product-promise h3{font-size:clamp(23px,6.4vw,30px)}
+}
 .project-card:focus-visible{translate:0 -16px;border-color:#bc95ff;box-shadow:0 0 0 1px #a88cff,0 0 26px #a88cff77,0 24px 42px #26123255;outline:2px solid #d8bdff;outline-offset:4px}
 .project-card:focus-visible .project-led{opacity:1}.project-card:focus-visible .led-beam{animation:project-led-orbit 1.8s linear infinite;stroke:#eee0ff;stroke-width:3.5}
 @media(hover:hover) and (pointer:fine){.project-card:hover{transform:none;translate:0 -16px;border-color:#bc95ff;box-shadow:0 0 0 1px #a88cff,0 0 26px #a88cff77,0 24px 42px #26123255;z-index:2}.project-card:hover .project-led{opacity:1}.project-card:hover .led-beam{animation:project-led-orbit 1.8s linear infinite;stroke:#eee0ff;stroke-width:3.5}}
