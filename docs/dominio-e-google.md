@@ -13,6 +13,23 @@ Domínio desejado: **https://nordhub.app.br/**.
 - Solicitação individual de indexação tentada e recusada. O teste em tempo real informou “Falha: Robots.txt inacessível” para o endereço HTTPS. O `robots.txt` foi conferido por HTTP com resposta 200 e rastreamento permitido.
 - Certificado HTTPS ainda pendente de emissão pelo GitHub. A ativação de HTTPS foi tentada e a API respondeu “The certificate does not exist yet”. Após a liberação do certificado, ativar HTTPS e repetir a inspeção/solicitação de indexação. A solicitação recusada não está em uma fila de indexação.
 
+### Diagnóstico atualizado do bloqueio de indexação
+
+No novo teste em tempo real do Search Console, em **30/10/2026 às 22:55 (Brasília)**, a busca da página HTTPS retornou **“Falha: Certificado SSL do servidor inválido”**. O rastreamento aparece como permitido; a permissão de indexação e a URL canônica ficam como N/D porque o Google não conseguiu obter a página. A mensagem “O URL só será indexado se certas condições forem atendidas” é um aviso geral da ferramenta; o erro concreto deste teste é o certificado SSL.
+
+As verificações realizadas nesta revisão confirmaram:
+
+- DNS autoritativo e Google Public DNS: os quatro registros A corretos do GitHub Pages e `www` como CNAME de `ericlessantos.github.io`.
+- Consulta pública da raiz: nenhum registro AAAA ou CAA. Não foi identificado apontamento IPv6 conflitante nem restrição CAA na raiz.
+- HTTP: página principal, `robots.txt` e `sitemap.xml` retornam 200. O robots permite `/`, e os três endereços não retornam cabeçalho `X-Robots-Tag` de bloqueio.
+- Código da página: metadado robots `index, follow, max-image-preview:large` e canonical `https://nordhub.app.br/`.
+- HTTPS: a validação normal de TLS falha por incompatibilidade entre o certificado apresentado e o domínio, tanto na raiz quanto em `www`.
+- GitHub Pages: domínio salvo, `https_certificate: null`, HTTPS obrigatório desativado e painel mostrando “DNS Check in Progress”. A verificação interna de saúde do GitHub ainda não reconhece o atendimento pelo Pages, embora o HTTP público já responda com servidor `GitHub.com`; a causa dessa divergência não foi confirmada.
+
+O domínio já foi removido e recolocado uma vez para reiniciar a emissão, conforme a orientação do GitHub. Evite repetir essa operação enquanto a verificação estiver em andamento, pois ela reinicia o processo. Não é necessário bloquear/desbloquear o robots nem mudar o canonical para HTTP.
+
+Para concluir após a emissão: verificar HTTPS válido na raiz e em `www`, ativar **Enforce HTTPS**, conferir `https://nordhub.app.br/robots.txt` e `/sitemap.xml` com resposta 200, repetir o teste ao vivo do Google e solicitar indexação quando o teste permitir. A inclusão efetiva na busca depende do processamento do Google e não é garantida pela solicitação.
+
 ## Conectar ao GitHub Pages
 
 O DNS público consultado em 30/10/2026 usa o Registro.br. Na consulta, o registro A da raiz era `216.24.57.1` e o CNAME de `www` era `nordhub-web-beta.onrender.com`. Eles apontavam ao Render e precisam ser substituídos para que o site institucional se torne a página principal.
