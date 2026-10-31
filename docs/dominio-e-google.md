@@ -9,7 +9,9 @@ Domínio desejado: **https://nordhub.app.br/**.
 - `api.nordhub.app.br` foi preservado como CNAME para `nordhub-api.onrender.com`.
 - Página institucional aberta e validada em `http://nordhub.app.br/`.
 - Propriedade `sc-domain:nordhub.app.br` verificada no Google Search Console por registro TXT. Mantenha o TXT `google-site-verification` na zona DNS para preservar essa verificação.
-- Certificado HTTPS ainda pendente de emissão pelo GitHub. Sitemap HTTPS e solicitação de indexação ainda aguardam a validação desse endereço.
+- Sitemap `https://nordhub.app.br/sitemap.xml` cadastrado no Google Search Console em 30/10/2026. O Google confirmou o envio e informou que processará o sitemap periodicamente; a primeira leitura retornou “Não foi possível buscar o sitemap”.
+- Solicitação individual de indexação tentada e recusada. O teste em tempo real informou “Falha: Robots.txt inacessível” para o endereço HTTPS. O `robots.txt` foi conferido por HTTP com resposta 200 e rastreamento permitido.
+- Certificado HTTPS ainda pendente de emissão pelo GitHub. A ativação de HTTPS foi tentada e a API respondeu “The certificate does not exist yet”. Após a liberação do certificado, ativar HTTPS e repetir a inspeção/solicitação de indexação. A solicitação recusada não está em uma fila de indexação.
 
 ## Conectar ao GitHub Pages
 
