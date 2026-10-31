@@ -2,6 +2,15 @@
 
 Domínio desejado: **https://nordhub.app.br/**.
 
+## Estado confirmado em 30/10/2026
+
+- Domínio principal salvo nas configurações do GitHub Pages.
+- Os quatro registros A da raiz e o CNAME de `www` abaixo foram salvos no Registro.br. Os servidores autoritativos já respondem com o novo apontamento.
+- `api.nordhub.app.br` foi preservado como CNAME para `nordhub-api.onrender.com`.
+- Página institucional aberta e validada em `http://nordhub.app.br/`.
+- Propriedade `sc-domain:nordhub.app.br` verificada no Google Search Console por registro TXT. Mantenha o TXT `google-site-verification` na zona DNS para preservar essa verificação.
+- Certificado HTTPS ainda pendente de emissão pelo GitHub. Sitemap HTTPS e solicitação de indexação ainda aguardam a validação desse endereço.
+
 ## Conectar ao GitHub Pages
 
 O DNS público consultado em 30/10/2026 usa o Registro.br. Na consulta, o registro A da raiz era `216.24.57.1` e o CNAME de `www` era `nordhub-web-beta.onrender.com`. Eles apontavam ao Render e precisam ser substituídos para que o site institucional se torne a página principal.

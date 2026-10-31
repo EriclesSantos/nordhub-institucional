@@ -1,8 +1,8 @@
 # Nördhub — Site institucional
 
-**Site:** https://ericlessantos.github.io/nordhub-institucional/
+**Domínio principal:** https://nordhub.app.br/
 
-**Domínio principal preparado:** https://nordhub.app.br/ — a ativação depende do apontamento DNS e da configuração do domínio no GitHub Pages. Consulte `docs/dominio-e-google.md`.
+O domínio foi vinculado ao GitHub Pages e o DNS foi atualizado no Registro.br em 30/10/2026. A página foi validada por HTTP; a emissão do certificado HTTPS ainda está pendente. A propriedade de domínio já foi verificada no Google Search Console. Consulte `docs/dominio-e-google.md` para o estado da configuração.
 
 Site institucional da Nördhub publicado a partir deste repositório no GitHub Pages, com React, TypeScript, Vite, Tailwind CSS e Motion. A versão pública funciona sem autenticação ou hospedagem do ChatGPT.
 
