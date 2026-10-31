@@ -28,6 +28,8 @@ As verificações realizadas nesta revisão confirmaram:
 
 O domínio já foi removido e recolocado uma vez para reiniciar a emissão, conforme a orientação do GitHub. Evite repetir essa operação enquanto a verificação estiver em andamento, pois ela reinicia o processo. Não é necessário bloquear/desbloquear o robots nem mudar o canonical para HTTP.
 
+Ainda durante esta revisão, o painel do GitHub concluiu uma verificação com **“DNS check successful”**. A consulta à API feita após essa aprovação continuou retornando `https_certificate: null`; portanto, a aprovação do DNS foi observada, mas a emissão e disponibilização do certificado ainda não foram concluídas.
+
 Para concluir após a emissão: verificar HTTPS válido na raiz e em `www`, ativar **Enforce HTTPS**, conferir `https://nordhub.app.br/robots.txt` e `/sitemap.xml` com resposta 200, repetir o teste ao vivo do Google e solicitar indexação quando o teste permitir. A inclusão efetiva na busca depende do processamento do Google e não é garantida pela solicitação.
 
 ## Conectar ao GitHub Pages
