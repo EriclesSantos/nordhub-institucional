@@ -2,6 +2,8 @@
 
 **Site:** https://ericlessantos.github.io/nordhub-institucional/
 
+**Domínio principal preparado:** https://nordhub.app.br/ — a ativação depende do apontamento DNS e da configuração do domínio no GitHub Pages. Consulte `docs/dominio-e-google.md`.
+
 Site institucional da Nördhub publicado a partir deste repositório no GitHub Pages, com React, TypeScript, Vite, Tailwind CSS e Motion. A versão pública funciona sem autenticação ou hospedagem do ChatGPT.
 
 ## Visual e interações
@@ -22,7 +24,7 @@ npm ci
 npm run dev
 ```
 
-O endereço local inclui `/nordhub-institucional/`. Para gerar a versão pública e conferir a compilação TypeScript:
+O endereço local usa a raiz `/`. O build usa caminhos relativos, compatíveis com o domínio próprio e com o subdiretório do GitHub. Para gerar a versão pública e conferir a compilação TypeScript:
 
 ```bash
 npm run build
@@ -33,7 +35,13 @@ npm run preview
 
 O workflow `.github/workflows/deploy-pages.yml` instala as dependências, valida o TypeScript, gera `dist/` e publica no GitHub Pages após cada push em `main`. Em **Settings → Pages**, a origem deve ser **GitHub Actions**. Falhas podem ser consultadas na aba **Actions**.
 
-Os caminhos das imagens e fontes respeitam o subdiretório do repositório. Para publicar em outro repositório ou domínio, ajuste `base` em `vite.config.ts`, ou defina `SITE_BASE_PATH` no ambiente de build.
+Os caminhos das imagens e fontes são relativos. Se necessário, é possível definir `SITE_BASE_PATH` no ambiente de build. A compilação também gera o conteúdo da página em HTML e o React conecta as interações a esse conteúdo no navegador.
+
+## Busca e compartilhamento
+
+O HTML contém título e descrição, URL canônica, dados Open Graph e dados estruturados `Organization` e `WebSite`. `public/robots.txt` permite o rastreamento e informa `https://nordhub.app.br/sitemap.xml`.
+
+Essas configurações preparam a página para os buscadores, mas não garantem indexação ou posição nos resultados. Depois de conectar o domínio e validar HTTPS, verifique a propriedade no Google Search Console, envie o sitemap e solicite a indexação da página inicial.
 
 ## Alterar os contatos
 
