@@ -1,9 +1,13 @@
-// Google Analytics 4 loads exclusively after explicit analytics consent.
+// Nördhub GA4: inject the Google tag only after explicit opt-in.
 const measurementId=(import.meta.env.VITE_GA_MEASUREMENT_ID || '').trim();
 const validId=/^G-[A-Z0-9]+$/.test(measurementId);
 let initialized=false;
 type GtagFn=(...args:unknown[])=>void;
 type AnalyticsWindow=Window & {dataLayer?:unknown[][];gtag?:GtagFn;[key:string]:unknown};
+
+function debugEnabled(){
+  return typeof window!=='undefined' && new URLSearchParams(window.location.search).get('analytics_debug')==='1';
+}
 
 export function analyticsAvailable(){return validId;}
 export function startAnalytics(){
@@ -19,34 +23,33 @@ export function startAnalytics(){
   w.dataLayer=w.dataLayer||[];
   w.gtag=(...args:unknown[])=>{w.dataLayer!.push(args)};
 
-  // Establish consent BEFORE initializing/configuring the Google tag.
-  // We don't load GA4 at all until the visitor opts in.
+  // The tag is ONLY injected after acceptance. Start with analytics granted
+  // so there is no startup race between a denied default and a granted update.
+  // Advertising remains denied.
   w.gtag('consent','default',{
-    analytics_storage:'denied',
+    analytics_storage:'granted',
     ad_storage:'denied',
     ad_user_data:'denied',
     ad_personalization:'denied'
   });
   w.gtag('js',new Date());
-  w.gtag('consent','update',{analytics_storage:'granted'});
-
-  // Explicit page_view makes the first consented page visit predictable.
-  // send_page_view:false prevents a duplicate automatic view.
+  // Let GA4 send its standard first page_view from config.
   w.gtag('config',measurementId,{
-    send_page_view:false,
+    send_page_view:true,
     allow_google_signals:false,
-    allow_ad_personalization_signals:false
-  });
-  w.gtag('event','page_view',{
-    send_to:measurementId,
-    page_location:window.location.href,
-    page_title:document.title
+    allow_ad_personalization_signals:false,
+    ...(debugEnabled()?{debug_mode:true}:{})
   });
 
   const script=document.createElement('script');
   script.async=true;
   script.src=`https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(measurementId)}`;
   script.dataset.nordhubAnalytics='true';
+
+  if(debugEnabled()){
+    script.addEventListener('load',()=>console.info('[Nordhub GA4] tag carregada; consentimento concedido; page_view configurado.',measurementId));
+    script.addEventListener('error',()=>console.error('[Nordhub GA4] falha ao carregar Google tag.'));
+  }
   document.head.appendChild(script);
 }
 
@@ -55,7 +58,7 @@ export function stopAnalytics(){
   const w=window as unknown as AnalyticsWindow;
   w.gtag?.('consent','update',{analytics_storage:'denied'});
   w[`ga-disable-${measurementId}`]=true;
-  // Best effort to remove GA cookies; provider cookies may have other names.
+  // Best-effort removal of first-party GA cookies; it cannot erase data already received.
   for(const cookie of document.cookie.split(';')){
     const name=cookie.split('=')[0]?.trim();
     if(!name || !/^_ga(?:_|$)/.test(name))continue;
