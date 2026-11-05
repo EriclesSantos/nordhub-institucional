@@ -84,3 +84,35 @@ document.querySelectorAll('.nord-3d-scene').forEach(scene=>{
   },{passive:true});
   scene.addEventListener('pointerleave',()=>{model.style.transform='rotateY(0deg) rotateX(0deg)'});
 });
+
+/* Responsive fixed menu, matching the institutional navigation behavior. */
+const commercialHeader=document.querySelector('.wrap>header');
+if(commercialHeader){
+  const menu=commercialHeader.querySelector('nav');
+  if(menu){
+    menu.id='commercial-navigation';
+    const toggle=document.createElement('button');
+    toggle.type='button';
+    toggle.className='commercial-menu-toggle';
+    toggle.setAttribute('aria-controls','commercial-navigation');
+    toggle.setAttribute('aria-expanded','false');
+    toggle.setAttribute('aria-label','Abrir menu');
+    toggle.textContent='☰';
+    commercialHeader.appendChild(toggle);
+    const closeMenu=()=>{
+      menu.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded','false');
+      toggle.setAttribute('aria-label','Abrir menu');
+      toggle.textContent='☰';
+    };
+    toggle.addEventListener('click',()=>{
+      const open=menu.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded',String(open));
+      toggle.setAttribute('aria-label',open?'Fechar menu':'Abrir menu');
+      toggle.textContent=open?'×':'☰';
+    });
+    menu.querySelectorAll('a').forEach(link=>link.addEventListener('click',closeMenu));
+    document.addEventListener('keydown',event=>{if(event.key==='Escape')closeMenu()});
+    window.addEventListener('resize',()=>{if(window.innerWidth>740)closeMenu()});
+  }
+}
