@@ -225,3 +225,25 @@ h1,h2,h3,.card b{font-family:var(--font-code);font-weight:400}
 .studio-footer-privacy .commercial-pref-btn{font:inherit;font-size:11px;color:#cbb8ff;background:#a88cff0c;border:1px solid #a88cff70;padding:8px 12px;border-radius:5px}
 @media(max-width:1000px){.studio-footer-main{grid-template-columns:1fr 1fr;gap:30px}.studio-footer-social{grid-column:auto}}
 @media(max-width:600px){.wrap>.studio-footer{padding:42px 22px 0;margin-top:65px}.studio-footer-main{grid-template-columns:1fr 1fr;gap:26px}.studio-footer-brand,.studio-footer-social{grid-column:1/-1}.studio-footer-social-buttons{flex-direction:row;flex-wrap:wrap}.studio-footer-social-buttons>a,.studio-footer-social-buttons>.social-unavailable{flex:1;min-width:140px}.studio-backtop{justify-content:flex-start}.studio-footer-bottom{align-items:flex-start;flex-direction:column}}
+
+/* Nördhub info page navigation: identical centered composition to main Studio. */
+.wrap>header{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding-inline:36px}
+.wrap>header>.brand{grid-column:1;justify-self:start}
+.wrap>header>nav{grid-column:2;justify-self:center;margin:0;display:flex;justify-content:center;gap:23px;align-items:center}
+.wrap>header>nav>a{font:400 13px/1.4 var(--font-code);text-transform:none;letter-spacing:0;color:#d6cee0;background:transparent;border:0;padding:8px 0;border-radius:0}
+.wrap>header>nav>a:last-child{font:400 13px/1.4 var(--font-code);text-transform:none;letter-spacing:0;color:#d6cee0;background:transparent;border:0;padding:8px 0}
+.wrap>header>nav>a:hover{color:#b5a0ff;background:transparent}
+.wrap>header>.commercial-menu-toggle{grid-column:3;justify-self:end}
+@media(min-width:741px) and (max-width:1100px){
+ .wrap>header{grid-template-columns:1fr auto 1fr;padding-inline:22px}
+ .wrap>header>nav{gap:13px}
+ .wrap>header>nav>a,.wrap>header>nav>a:last-child{font-size:11px}
+ .wrap>header>.brand{font-size:20px}
+}
+@media(max-width:740px){
+ .wrap>header{display:flex;justify-content:space-between;padding-inline:18px}
+ .wrap>header>nav{display:none;position:absolute;top:79px;left:0;right:0;margin:0;padding:20px 22px 27px;flex-direction:column;align-items:stretch;gap:13px;justify-content:flex-start;z-index:820;background:#0e0918f7}
+ .wrap>header>nav.is-open{display:flex}
+ .wrap>header>nav>a,.wrap>header>nav>a:last-child{font-size:14px;padding:9px 10px}
+ .wrap>header>.commercial-menu-toggle{display:inline-flex;margin-left:auto}
+}
