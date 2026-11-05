@@ -3,7 +3,7 @@ const measurementId=(import.meta.env.VITE_GA_MEASUREMENT_ID || '').trim();
 const validId=/^G-[A-Z0-9]+$/.test(measurementId);
 let initialized=false;
 type GtagFn=(...args:unknown[])=>void;
-type AnalyticsWindow=Window & {dataLayer?:unknown[][];gtag?:GtagFn;[key:string]:unknown};
+type AnalyticsWindow=Window & {dataLayer?:IArguments[];gtag?:GtagFn;[key:string]:unknown};
 
 function debugEnabled(){
   return typeof window!=='undefined' && new URLSearchParams(window.location.search).get('analytics_debug')==='1';
@@ -21,7 +21,9 @@ export function startAnalytics(){
 
   initialized=true;
   w.dataLayer=w.dataLayer||[];
-  w.gtag=(...args:unknown[])=>{w.dataLayer!.push(args)};
+  // Match Google's official gtag.js snippet: push the arguments object,
+  // not a newly created Array (some tag parsers distinguish them).
+  w.gtag=function(..._args:unknown[]){w.dataLayer!.push(arguments);};
 
   // The tag is ONLY injected after acceptance. Start with analytics granted
   // so there is no startup race between a denied default and a granted update.
