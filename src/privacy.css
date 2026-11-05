@@ -10,3 +10,31 @@
 .nh-consent-card .nh-consent-footnote{font-size:10px;line-height:1.6;color:#8f85a6;margin-top:19px}.nh-consent-card :is(button,a):focus-visible{outline:2px solid #00b7d9;outline-offset:3px}
 @keyframes nhFade{from{opacity:0}to{opacity:1}}@keyframes nhEnter{from{opacity:0;transform:translateY(18px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
 @media(prefers-reduced-motion:reduce){.nh-consent-backdrop,.nh-consent-card{animation:none}.nh-consent-actions button{transition:none}}@media(max-width:480px){.nh-consent-card{padding:23px 19px}.nh-consent-actions button{min-width:100%}.nh-consent-links{gap:9px 14px}}
+
+/* Refinamento Studio: painel compacto, tipografia fluida e contraste dos dois caminhos. */
+#privacy-root .nh-consent-card{width:min(100%,510px);padding:clamp(20px,3.2vw,30px);border-radius:17px}
+#privacy-root .nh-consent-icon{margin:14px 0 9px}
+#privacy-root .nh-consent-card h2{font-size:clamp(29px,4vw,39px);line-height:1.14;margin-bottom:12px}
+#privacy-root .nh-consent-card p{font-size:12.5px;line-height:1.68}
+#privacy-root .nh-consent-links{margin:17px 0 19px;gap:10px 19px}
+#privacy-root .nh-consent-actions{gap:11px}
+#privacy-root .nh-consent-actions button{padding:13px 14px;font-size:12px;min-width:170px;font-weight:650;min-height:46px;box-shadow:none}
+#privacy-root .nh-consent-card .nh-consent-actions .nh-consent-accept{
+  background:#a88cff!important;
+  background-image:linear-gradient(105deg,#a88cff 0%,#8d9ff9 52%,#00b7d9 100%)!important;
+  color:#0b0b17!important;border:1px solid transparent!important;
+  box-shadow:0 4px 25px #a88cff30!important;
+}
+#privacy-root .nh-consent-card .nh-consent-actions .nh-consent-reject{
+  background:#191528!important;color:#f2eaff!important;
+  border:1px solid #b39cef!important;
+}
+#privacy-root .nh-consent-card .nh-consent-actions .nh-consent-reject:hover{background:#a88cff20!important}
+#privacy-root .nh-consent-card .nh-consent-footnote{font-size:10px;line-height:1.55;margin-top:14px}
+@media(max-width:540px){
+  #privacy-root .nh-consent-backdrop{padding:12px}
+  #privacy-root .nh-consent-card{max-height:calc(100dvh - 24px);padding:21px}
+  #privacy-root .nh-consent-card h2{font-size:31px}
+  #privacy-root .nh-consent-links{gap:8px 13px}
+  #privacy-root .nh-consent-actions button{min-width:100%}
+}
