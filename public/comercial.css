@@ -34,3 +34,16 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 @media(max-width:780px){header{align-items:flex-start}header nav{gap:14px}.hero{grid-template-columns:1fr;min-height:auto;padding:70px 0 40px}.visual{min-height:240px}.visual img{width:190px}.grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}}
 @media(max-width:510px){.wrap{width:calc(100% - 34px)}header{flex-direction:column}h1{font-size:42px}.actions .btn{width:100%}.form-grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr}.cta{padding:24px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+
+/* Consent matches Nördhub Studio and is only mounted for first-time visitors. */
+.commercial-consent{position:fixed;inset:0;z-index:20000;padding:20px;display:grid;place-items:center;background:#04040ccc;backdrop-filter:blur(10px)}
+.commercial-consent-card{position:relative;width:min(100%,520px);max-height:calc(100dvh - 40px);overflow-y:auto;background:radial-gradient(ellipse at top right,#43306777,transparent 68%),#151322;border:1px solid #a88cff80;border-radius:18px;padding:34px;box-shadow:0 24px 85px #000c}
+.commercial-consent-card h2{font-size:clamp(28px,4vw,38px);margin:18px 0 15px}
+.commercial-consent-card h2 em{font-style:normal;background:linear-gradient(100deg,#a88cff,#00b7d9);color:transparent;background-clip:text}
+.commercial-consent-card p{color:#cac1db;font-size:13px}
+.commercial-consent-card p a{color:#baabf7;text-decoration:underline;text-underline-offset:3px}
+.commercial-consent-card .actions{margin-bottom:0;gap:10px}
+.commercial-consent-card .actions .btn{font-size:12px;flex:1;min-width:185px}
+.commercial-consent-close{position:absolute;top:18px;right:18px;background:#a88cff21;border:1px solid #a88cff66;color:#fff;font-size:24px;border-radius:9px;width:39px;height:39px;line-height:1}
+.commercial-pref-btn{background:transparent;color:#cbb8ff;border:1px solid #a88cff70;border-radius:7px;padding:7px 11px;font-size:12px}
+@media(max-width:550px){.commercial-consent-card{padding:24px 19px}.commercial-consent-card .actions .btn{min-width:100%}}
