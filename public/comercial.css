@@ -122,3 +122,76 @@ header{background:linear-gradient(90deg,#090915e8,#0b0b17c9);border-bottom:1px s
 footer{background:linear-gradient(90deg,#0b0b17d9,#13112680)}
 @media(max-width:870px){.hero{grid-template-columns:1fr;gap:4px}.nord-3d-scene{height:440px;min-height:440px}.visual-model{inset:-2% 0 0}body::before{background-size:auto,75vw auto,75vw auto,auto,auto}}
 @media(max-width:520px){.hero h1{font-size:clamp(30px,8vw,40px)}.nord-3d-scene{height:330px;min-height:330px}.visual-caption{font-size:8px}.hero{gap:2px}body::before{background-position:center,right -25vw top 0,left -25vw bottom 0,center,center;background-size:auto,100vw auto,100vw auto,auto,auto}}
+
+/* NÖRDHUB STUDIO / SHARED DESIGN RULES
+   Identical visual tokens, fixed site navigation and carved-edge CTAs.
+   Scoped to commercial pages; the home page remains unchanged. */
+:root{--bg:#0b0b17;--violet:#a88cff;--cyan:#00b7d9;--text:#f4f2fa;--font-code:NordCode,'DejaVu Sans Mono',Consolas,monospace;--nord-cut:polygon(2% 4%,22% 5%,31% 1%,54% 3%,77% 1%,98% 5%,96% 30%,100% 59%,97% 95%,78% 93%,60% 99%,35% 96%,18% 100%,0 95%,3% 65%,0 35%)}
+html{scroll-padding-top:118px}
+body{font-family:var(--font-code);color:var(--text)}
+/* Match the institutional header: full-viewport fixed bar, not a narrow card. */
+.wrap>header{
+ position:fixed!important;top:0;left:0;right:0;z-index:800;
+ width:100%;height:96px;margin:0;padding:0 max(36px,calc((100vw - 1360px)/2));
+ display:flex;align-items:center;gap:28px;
+ background:linear-gradient(#070710f5,#0a0914ee);
+ border-bottom:1px solid #a88cff44;
+ backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+ box-shadow:0 8px 30px #0003;
+}
+.wrap>header::after{content:"";position:absolute;bottom:-9px;left:0;right:0;height:10px;pointer-events:none;background:#0a0914;clip-path:polygon(0 0,100% 0,100% 55%,97% 35%,94% 70%,90% 45%,85% 70%,80% 38%,75% 70%,70% 45%,65% 70%,60% 40%,55% 70%,50% 40%,45% 70%,40% 40%,35% 68%,30% 38%,25% 70%,20% 40%,15% 70%,10% 45%,5% 65%,0 55%)}
+.wrap>header .brand{font:700 23px/1.2 var(--font-code);letter-spacing:.1px;color:#f4f2fa;white-space:nowrap}
+.wrap>header .brand img{height:41px;width:32px}
+.wrap>header nav{margin-left:auto;display:flex;align-items:center;gap:22px;font:400 12px/1.5 var(--font-code);text-transform:uppercase;letter-spacing:.6px}
+.wrap>header nav a{color:#d6cee0;white-space:nowrap}
+.wrap>header nav a:hover,.wrap>header nav a[aria-current="page"]{color:#b5a0ff}
+.wrap>header nav a:last-child{
+ font:400 12px/1.2 var(--font-code);
+ border:1px solid #b39ae866;border-radius:0;
+ padding:13px 19px;background:#a88cff08;color:#eee0ff;
+}
+.wrap>main{padding-top:96px}
+.hero{min-height:calc(100svh - 96px)}
+/* Reuse the precise jagged paper/forge button language from the home. */
+.actions .btn,.cta .btn{
+ position:relative;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;
+ background:transparent!important;border:0!important;border-radius:0!important;
+ box-shadow:none!important;color:#eee0ff!important;
+ text-transform:none;font:400 13px/1.35 var(--font-code);
+ min-height:49px;padding:13px 25px;transition:translate .23s ease,filter .23s ease;
+}
+.actions .btn::before,.actions .btn::after,.cta .btn::before,.cta .btn::after{
+ content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;
+ clip-path:var(--nord-cut);border-radius:0
+}
+.actions .btn::before,.cta .btn::before{background:#bba1f6}
+.actions .btn::after,.cta .btn::after{inset:2px;background:#20152f}
+.actions .btn.primary,.cta .btn.primary{color:#131020!important}
+.actions .btn.primary::before,.cta .btn.primary::before{background:linear-gradient(100deg,#bba1f6,#a88cff 65%,#9b86e1)}
+.actions .btn.primary::after,.cta .btn.primary::after{display:none}
+.actions .btn.outline::before,.cta .btn.outline::before{background:#c7a7ee}
+.actions .btn.outline::after,.cta .btn.outline::after{background:#20152f}
+.actions .btn:hover,.cta .btn:hover{translate:0 -5px;filter:drop-shadow(0 0 8px #a88cff77)}
+.actions .btn:focus-visible,.cta .btn:focus-visible{outline:2px solid #00b7d9;outline-offset:5px}
+h1,h2,h3,.card b{font-family:var(--font-code);font-weight:400}
+.hero h1{font-size:clamp(34px,3.5vw,52px);font-weight:400;line-height:1.2}
+.hero h1 em{background:linear-gradient(95deg,#d7c7ff,#aa86f2 62%,#7ad7ed);background-clip:text;-webkit-background-clip:text;color:transparent}
+/* Keep navigation available on mobile without horizontal overflow. */
+.commercial-menu-toggle{display:none;border:1px solid #a88cff88;background:#171125;color:#eee0ff;font-size:21px;width:43px;height:43px;cursor:pointer;align-items:center;justify-content:center}
+@media(max-width:900px){
+ .wrap>header{height:80px;padding:0 22px;gap:12px}
+ .wrap>header .brand{font-size:20px}
+ .wrap>header nav{gap:11px;font-size:11px}
+ .wrap>main{padding-top:80px}
+ .hero{min-height:calc(100svh - 80px)}
+}
+@media(max-width:740px){
+ .wrap>header nav{display:none;position:absolute;top:79px;left:0;right:0;z-index:820;background:#0e0918f7;backdrop-filter:blur(16px);padding:20px 22px 27px;box-shadow:0 18px 25px #0006;flex-direction:column;align-items:stretch;gap:14px}
+ .wrap>header nav.is-open{display:flex}
+ .wrap>header nav a{padding:9px 10px;font-size:13px}
+ .wrap>header .commercial-menu-toggle{display:inline-flex;margin-left:auto}
+ .wrap>header .brand{font-size:18px}
+ .wrap>header{padding-inline:18px}
+ .actions .btn,.cta .btn{min-width:0}
+}
+@media(prefers-reduced-motion:reduce){.actions .btn,.cta .btn{transition:none!important}}
