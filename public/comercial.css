@@ -47,3 +47,52 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .commercial-consent-close{position:absolute;top:18px;right:18px;background:#a88cff21;border:1px solid #a88cff66;color:#fff;font-size:24px;border-radius:9px;width:39px;height:39px;line-height:1}
 .commercial-pref-btn{background:transparent;color:#cbb8ff;border:1px solid #a88cff70;border-radius:7px;padding:7px 11px;font-size:12px}
 @media(max-width:550px){.commercial-consent-card{padding:24px 19px}.commercial-consent-card .actions .btn{min-width:100%}}
+
+/* Visual inheritance from Nördhub Studio's EXISTING homepage:
+   same circuit assets, dark center, cyan/teal corners and dimensional emblem.
+   Scoped to commercial.css: the original homepage is untouched. */
+@font-face{font-family:NordCode;src:url('/fonts/nord-code.woff') format('woff');font-style:normal;font-weight:400 700;font-display:swap}
+:root{--font-code:NordCode,'DejaVu Sans Mono',Consolas,monospace}
+body{font-family:var(--font-code);background:#090912;color:#f4f2fa;min-height:100vh;isolation:isolate}
+body::before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(ellipse at 95% 52%,#00b7d91b,transparent 50%),radial-gradient(ellipse at 0% 60%,#a88cff19,transparent 48%),url('/nord-circuit-corners.webp') right -8vw top -8vw/auto 115vh no-repeat,url('/nord-circuit-corners.webp') left -10vw bottom -12vw/auto 110vh no-repeat;opacity:.65;mask-image:linear-gradient(90deg,#000b,#0005 22%,transparent 48%,#0007 78%,#000e)}
+body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background-color:#a88cff;mask-image:url('/nord-circuit-seamless.svg');mask-repeat:repeat;mask-size:720px 720px;opacity:.04}
+.wrap{width:min(1240px,calc(100% - 96px))}
+header{font-family:var(--font-code);position:relative;z-index:5;border-bottom:1px solid #a88cff28;min-height:88px}
+.brand{font-family:var(--font-code);font-weight:700;font-size:23px;letter-spacing:.01em}
+header nav{font-family:var(--font-code);font-size:12px;gap:25px;color:#d6cee0;text-transform:uppercase;letter-spacing:.06em}
+header nav a:last-child{border:1px solid #a88cff78;padding:11px 16px;border-radius:4px;color:#eadcff;background:#a88cff09}
+header nav a:last-child:hover{background:#a88cff25}
+.hero{min-height:calc(100svh - 88px);grid-template-columns:minmax(0,1fr) minmax(290px,1fr);gap:18px;isolation:isolate}
+.hero::before{content:"";position:absolute;inset:-15px calc(50% - 50vw);z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 65% 45%,#33225659,transparent 42%),linear-gradient(90deg,#0b0b17b0,transparent 28%,transparent 72%,#0b0b1780)}
+.hero h1{font-family:var(--font-code);font-size:clamp(38px,4.3vw,62px);font-weight:500;letter-spacing:-.055em;line-height:1.16}
+.hero .lead{font-family:var(--font-code);font-size:clamp(13px,1.2vw,16px);color:#c6bdd4;line-height:1.9}
+.kicker{font-family:var(--font-code);font-size:10px;letter-spacing:.12em;font-weight:500;color:#b8a7d3}
+.hero .kicker::before{content:"";display:inline-block;width:7px;height:7px;margin-right:12px;border-radius:50%;background:#00b7d9;box-shadow:0 0 15px #00b7d9}
+.btn{font-family:var(--font-code);font-weight:500;font-size:12px;border-radius:4px;min-height:47px}
+.btn.primary{background:#a88cff;color:#130f20;box-shadow:0 0 20px #a88cff1e}
+.btn.primary:hover{background:#c7afff}
+.btn.outline{background:#130f1cbf;color:#e4d7f7;border-color:#a88cff92}
+section.block{position:relative;isolation:isolate;border-color:#a88cff27}
+section.block::before{content:"";position:absolute;z-index:-1;inset:0 calc(50% - 50vw);pointer-events:none;background:#7ca1c5;mask-image:url('/nord-circuit-seamless.svg');mask-repeat:repeat;mask-size:720px 720px;opacity:.045}
+section.block:nth-of-type(even)::before{background:#a88cff;opacity:.055}
+.card,.step,.cta{font-family:var(--font-code);background:radial-gradient(ellipse at 100% 0%,#2c1c4755,transparent 67%),#141321e8;backdrop-filter:blur(3px);border-color:#a88cff38}
+.card{transition:transform .28s ease,border-color .28s,box-shadow .28s}
+.card:hover{transform:translateY(-7px);border-color:#a88cff9c;box-shadow:0 10px 45px #a88cff1a}
+.card b{color:#f4f0ff;font-weight:500}.card p,.step p,.cta p{color:#c8bfd4}
+h2,h3{font-weight:500;font-family:var(--font-code)}
+/* Approved dimensional hammer: same artwork as src/hammer.tsx, not the flat brand. */
+.nord-3d-scene{min-height:540px;overflow:visible;perspective:1100px;background:transparent;--mx:0;--my:0}
+.nord-3d-scene::before,.nord-3d-scene::after{display:none}
+.visual-aura{position:absolute;inset:13% 7%;background:radial-gradient(ellipse at 47% 46%,#a88cff3b,transparent 63%),radial-gradient(ellipse at 66% 50%,#00b7d928,transparent 66%);filter:blur(35px);pointer-events:none}
+.visual-orbit{position:absolute;inset:8% 7%;border-radius:50%;border:1px solid #a88cff3e;pointer-events:none;transform:rotate(-25deg) scaleY(.8)}
+.visual-orbit-two{inset:13% 3%;transform:rotate(45deg) scaleY(.79);border-color:#00b7d926}
+.visual-model{position:absolute;inset:1% 3% 4%;transform-style:preserve-3d;transform:rotateY(calc(var(--mx)*8deg)) rotateX(calc(var(--my)*-6deg));transition:transform .5s ease;animation:commercial-emblem-float 8s ease-in-out infinite}
+.nord-3d-scene .visual-model>img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 0 18px #a88cff75) drop-shadow(0 0 12px #00b7d931)}
+.visual-model-sheen{position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 34%,#f2d7ff52 49%,#72e0fa55 52%,transparent 65%);background-size:300% 100%;mask:url('/nordhub-quarter.webp') center/contain no-repeat;animation:commercial-sheen 9s linear infinite;mix-blend-mode:screen;opacity:.65}
+.visual-caption{position:absolute;bottom:-3%;font-size:11px;letter-spacing:.13em;color:#c7b0f5;white-space:nowrap;text-shadow:0 0 10px #a88cff77}
+.visual-caption::before{content:"";display:inline-block;width:6px;height:6px;margin-right:12px;background:#00b7d9;box-shadow:0 0 13px #00b7d9}
+@keyframes commercial-emblem-float{0%,100%{translate:0 0}50%{translate:0 -9px}}
+@keyframes commercial-sheen{0%{background-position:130% 0}100%{background-position:-130% 0}}
+@media(max-width:850px){.wrap{width:calc(100% - 42px)}.hero{grid-template-columns:1fr}.nord-3d-scene{min-height:400px;max-width:600px;width:100%;margin:auto}.visual-caption{bottom:0}}
+@media(max-width:500px){.hero{padding-top:50px}.nord-3d-scene{min-height:320px}.wrap{width:calc(100% - 32px)}header nav{gap:11px;font-size:10px}.hero h1{font-size:38px}}
+@media(prefers-reduced-motion:reduce){.visual-model,.visual-model-sheen{animation:none!important;transition:none!important}.card{transition:none!important}}
