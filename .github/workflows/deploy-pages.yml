@@ -31,6 +31,8 @@ jobs:
       - name: Instalar dependências
         run: npm ci
       - name: Validar e construir
+        env:
+          VITE_GA_MEASUREMENT_ID: ${{ vars.GA4_MEASUREMENT_ID }}
         run: npm run build
       - name: Configurar Pages
         uses: actions/configure-pages@v5
