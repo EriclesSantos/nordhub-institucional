@@ -180,3 +180,11 @@ html[data-motion=paused]{scroll-behavior:auto}html[data-motion=paused] *,html[da
 @media(hover:hover) and (pointer:fine){.project-card:hover{transform:none;translate:0 -16px;border-color:#bc95ff;box-shadow:0 0 0 1px #a88cff,0 0 26px #a88cff77,0 24px 42px #26123255;z-index:2}.project-card:hover .project-led{opacity:1}.project-card:hover .led-beam{animation:project-led-orbit 1.8s linear infinite;stroke:#eee0ff;stroke-width:3.5}}
 @keyframes project-led-orbit{to{stroke-dashoffset:-100}}
 html[data-motion=paused] .project-card:is(:hover,:focus-visible){translate:none}html[data-motion=paused] .led-beam{stroke-dasharray:none;opacity:.6}
+
+/* Privacy controls: regular footer links, no floating badge. */
+.footer-privacy-controls{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.footer-privacy-controls a,.footer-privacy-controls button{font:inherit;font-size:11px;color:#c8b2f3;text-decoration:none}
+.footer-privacy-controls button{background:transparent;border:1px solid #a88cff70;border-radius:7px;cursor:pointer;padding:8px 11px}
+.footer-privacy-controls a:hover,.footer-privacy-controls button:hover{color:#00b7d9}
+.footer-privacy-controls :is(a,button):focus-visible{outline:2px solid #00b7d9;outline-offset:3px}
+@media(max-width:600px){.footer-privacy-controls{gap:10px;margin-top:14px}}
