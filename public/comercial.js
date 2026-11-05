@@ -71,3 +71,16 @@ document.querySelectorAll('[data-utm]').forEach(anchor=>{
   keys.filter(key=>params.has(key)).forEach(key=>url.searchParams.set(key,params.get(key)));
   anchor.href=url.href;
 });
+
+/* Reuse the homepage's restrained 3D parallax on the approved hammer artwork. */
+document.querySelectorAll('.nord-3d-scene').forEach(scene=>{
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  const model=scene.querySelector('.visual-model');if(!model)return;
+  scene.addEventListener('pointermove',event=>{
+    const rect=scene.getBoundingClientRect();
+    const x=Math.max(-1,Math.min(1,((event.clientX-rect.left)/rect.width-.5)*2));
+    const y=Math.max(-1,Math.min(1,((event.clientY-rect.top)/rect.height-.5)*2));
+    model.style.transform='rotateY('+(x*8).toFixed(2)+'deg) rotateX('+(-y*6).toFixed(2)+'deg)';
+  },{passive:true});
+  scene.addEventListener('pointerleave',()=>{model.style.transform='rotateY(0deg) rotateX(0deg)'});
+});
