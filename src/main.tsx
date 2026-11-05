@@ -1,6 +1,7 @@
 import {createRoot,hydrateRoot} from 'react-dom/client';
 import Home from './page';
 import PrivacyNotice from './privacy';
+import {initializeMarketing} from './marketing';
 import './globals.css';
 
 const root=document.getElementById('root')!;
@@ -12,3 +13,5 @@ const privacyRoot=document.createElement('div');
 privacyRoot.id='privacy-root';
 document.body.appendChild(privacyRoot);
 createRoot(privacyRoot).render(<PrivacyNotice/>);
+
+initializeMarketing();
