@@ -51,10 +51,14 @@ else if(getChoice()!=='rejected')showConsent();
 
 const footer=document.querySelector('footer');
 if(footer){
-  const pref=document.createElement('button');
-  pref.type='button';pref.textContent='Configurar cookies';pref.className='commercial-pref-btn';
-  pref.addEventListener('click',showConsent);
-  footer.appendChild(pref);
+  const pref=footer.querySelector('.commercial-pref-btn');
+  if(pref)pref.addEventListener('click',showConsent);
+  else{
+    const fallback=document.createElement('button');
+    fallback.type='button';fallback.textContent='Configurar cookies';fallback.className='commercial-pref-btn';
+    fallback.addEventListener('click',showConsent);
+    footer.appendChild(fallback);
+  }
 }
 
 document.addEventListener('click',event=>{
