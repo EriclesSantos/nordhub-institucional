@@ -96,3 +96,29 @@ h2,h3{font-weight:500;font-family:var(--font-code)}
 @media(max-width:850px){.wrap{width:calc(100% - 42px)}.hero{grid-template-columns:1fr}.nord-3d-scene{min-height:400px;max-width:600px;width:100%;margin:auto}.visual-caption{bottom:0}}
 @media(max-width:500px){.hero{padding-top:50px}.nord-3d-scene{min-height:320px}.wrap{width:calc(100% - 32px)}header nav{gap:11px;font-size:10px}.hero h1{font-size:38px}}
 @media(prefers-reduced-motion:reduce){.visual-model,.visual-model-sheen{animation:none!important;transition:none!important}.card{transition:none!important}}
+
+/* Commercial pages - exact visual family of the already approved institutional home.
+   Stronger circuit corners and near-black center, with no changes to the homepage. */
+body::before{z-index:-1;opacity:.83;background:
+radial-gradient(ellipse 48% 72% at 50% 45%,#0b0b17f0 0%,#0b0b17d8 37%,transparent 88%),
+url('/nord-circuit-corners.webp') right -3vw top -5vh / min(57vw,980px) auto no-repeat,
+url('/nord-circuit-corners.webp') left -3vw bottom -8vh / min(57vw,980px) auto no-repeat,
+radial-gradient(ellipse 45% 65% at 95% 42%,#00b7d929,transparent 85%),
+radial-gradient(ellipse 45% 65% at 2% 62%,#a88cff2a,transparent 85%);
+mask-image:none}
+body::after{z-index:-1;opacity:.07;mask-size:600px 600px}
+.wrap{position:relative;z-index:1}
+header{background:linear-gradient(90deg,#090915e8,#0b0b17c9);border-bottom:1px solid #a88cff30}
+.hero{grid-template-columns:minmax(0,1fr) minmax(360px,.95fr);gap:30px}
+.hero::before{background:radial-gradient(ellipse 53% 72% at 55% 50%,#0a0915a0,transparent 83%);pointer-events:none}
+.hero h1{font-size:clamp(35px,3.6vw,53px);font-weight:400;line-height:1.22;letter-spacing:-.065em}
+.hero .lead{font-size:clamp(12px,1vw,15px);line-height:1.9;max-width:520px}
+.nord-3d-scene{min-height:610px;max-width:640px;width:100%;justify-self:center}
+.visual-model{inset:-6% -6% 2%}
+.nord-3d-scene .visual-model>img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 0 16px #a88cff7c) drop-shadow(0 0 12px #00b7d940)}
+.visual-orbit{inset:9% 4%}.visual-orbit-two{inset:13% 1%}
+.visual-caption{bottom:0}
+.card,.step,.cta{border-radius:8px}
+footer{background:linear-gradient(90deg,#0b0b17d9,#13112680)}
+@media(max-width:870px){.hero{grid-template-columns:1fr;gap:4px}.nord-3d-scene{height:440px;min-height:440px}.visual-model{inset:-2% 0 0}body::before{background-size:auto,75vw auto,75vw auto,auto,auto}}
+@media(max-width:520px){.hero h1{font-size:clamp(30px,8vw,40px)}.nord-3d-scene{height:330px;min-height:330px}.visual-caption{font-size:8px}.hero{gap:2px}body::before{background-position:center,right -25vw top 0,left -25vw bottom 0,center,center;background-size:auto,100vw auto,100vw auto,auto,auto}}
