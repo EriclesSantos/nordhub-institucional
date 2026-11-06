@@ -171,6 +171,8 @@ body{font-family:var(--font-code);color:var(--text)}
 .actions .btn.primary::after,.cta .btn.primary::after{display:none}
 .actions .btn.outline::before,.cta .btn.outline::before{background:#c7a7ee}
 .actions .btn.outline::after,.cta .btn.outline::after{background:#20152f}
+.commercial-consent-card .actions .commercial-consent-yes{color:#fff!important}
+.commercial-consent-card .actions .commercial-consent-yes::before{background:linear-gradient(105deg,#6240a0,#245c78)}
 .actions .btn:hover,.cta .btn:hover{translate:0 -5px;filter:drop-shadow(0 0 8px #a88cff77)}
 .actions .btn:focus-visible,.cta .btn:focus-visible{outline:2px solid #00b7d9;outline-offset:5px}
 h1,h2,h3,.card b{font-family:var(--font-code);font-weight:400}

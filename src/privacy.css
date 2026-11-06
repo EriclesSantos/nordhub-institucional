@@ -19,17 +19,14 @@
 #privacy-root .nh-consent-links{margin:17px 0 19px;gap:10px 19px}
 #privacy-root .nh-consent-actions{gap:11px}
 #privacy-root .nh-consent-actions button{padding:13px 14px;font-size:12px;min-width:170px;font-weight:650;min-height:46px;box-shadow:none}
-#privacy-root .nh-consent-card .nh-consent-actions .nh-consent-accept{
-  background:#a88cff!important;
-  background-image:linear-gradient(105deg,#a88cff 0%,#8d9ff9 52%,#00b7d9 100%)!important;
-  color:#0b0b17!important;border:1px solid transparent!important;
-  box-shadow:0 4px 25px #a88cff30!important;
+#privacy-root .nh-consent-card .nh-consent-actions button{
+  background:transparent;border:0;color:#fff;
 }
-#privacy-root .nh-consent-card .nh-consent-actions .nh-consent-reject{
-  background:#191528!important;color:#f2eaff!important;
-  border:1px solid #b39cef!important;
+#privacy-root .nh-consent-actions .nh-consent-accept::before{
+  background:linear-gradient(105deg,#6240a0,#245c78);
 }
-#privacy-root .nh-consent-card .nh-consent-actions .nh-consent-reject:hover{background:#a88cff20!important}
+#privacy-root .nh-consent-actions .nh-consent-accept::after{content:none}
+#privacy-root .nh-consent-actions button:focus-visible{outline:2px solid #00b7d9;outline-offset:3px}
 #privacy-root .nh-consent-card .nh-consent-footnote{font-size:10px;line-height:1.55;margin-top:14px}
 @media(max-width:540px){
   #privacy-root .nh-consent-backdrop{padding:12px}
